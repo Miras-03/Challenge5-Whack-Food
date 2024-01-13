@@ -2897,6 +2897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1840911244}
   - component: {fileID: 1840911243}
+  - component: {fileID: 1840911245}
   m_Layer: 0
   m_Name: FoodSpawner
   m_TagString: Untagged
@@ -2916,11 +2917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37538ebb9bd5ad8499ac5cba6310fd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foods:
-  - {fileID: 8111705904240061323, guid: 6e2ca4e7a6f96ce409e2fdc7030cdb26, type: 3}
-  - {fileID: 8111705904240061323, guid: 6e2ca4e7a6f96ce409e2fdc7030cdb26, type: 3}
-  - {fileID: 8860620669688747754, guid: d0077d767824b054b8592a52a62e59a9, type: 3}
-  - {fileID: 6470569313264358871, guid: 61f6f086db4a29649b8703916282f437, type: 3}
 --- !u!4 &1840911244
 Transform:
   m_ObjectHideFlags: 0
@@ -2936,6 +2932,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1372971954}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1840911245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840911242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272699f2358776a439336fa65881e4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - prefab: {fileID: 8943617152963407240, guid: c83243a1d9415c749a6b96e41dbb607f, type: 3}
+    tag: Cookie
+    quantity: 5
+  - prefab: {fileID: 8111705904240061323, guid: 6e2ca4e7a6f96ce409e2fdc7030cdb26, type: 3}
+    tag: EnergyCan
+    quantity: 5
+  - prefab: {fileID: 8860620669688747754, guid: d0077d767824b054b8592a52a62e59a9, type: 3}
+    tag: Steak
+    quantity: 5
+  - prefab: {fileID: 6470569313264358871, guid: 61f6f086db4a29649b8703916282f437, type: 3}
+    tag: Skull
+    quantity: 5
 --- !u!1 &1958266486
 GameObject:
   m_ObjectHideFlags: 0

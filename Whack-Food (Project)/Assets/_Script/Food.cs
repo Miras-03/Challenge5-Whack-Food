@@ -6,16 +6,14 @@ using System.Collections;
 public sealed class Food : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosionParticle;
+    private RateSingleton rateSingleton;
 
     [SerializeField] private int point = 5;
-    private const float minRange = -3.75f;
-    private const float spaceBetweenSquares = 2.5f;
 
-    public float Rate { get; set; }
+    private void Awake() => rateSingleton = RateSingleton.Instance;
 
-    private void Start()
+    private void OnEnable()
     {
-        transform.position = RandomSpawnPosition();
         StartCoroutine(FoodRemoveRoutine());
     }
 
@@ -25,28 +23,15 @@ public sealed class Food : MonoBehaviour
         Explode();
     }
 
-    private void OnCollisionEnter() => Explode();
-
-    private Vector3 RandomSpawnPosition()
-    {
-        float spawnPosX = minRange + (RandomSquareIndex() * spaceBetweenSquares);
-        float spawnPosY = minRange + (RandomSquareIndex() * spaceBetweenSquares);
-
-        Vector3 spawnPosition = new Vector3(spawnPosX, spawnPosY, 0);
-        return spawnPosition;
-    }
-
-    private int RandomSquareIndex() => Random.Range(0, 4);
-
     private void Explode()
     {
         Instantiate(explosionParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private IEnumerator FoodRemoveRoutine()
     {
-        yield return new WaitForSeconds(Rate);
+        yield return new WaitForSeconds(rateSingleton.Rate);
         if (gameObject != null)
         {
             Explode();
